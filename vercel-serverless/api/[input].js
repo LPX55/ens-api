@@ -1,7 +1,15 @@
 import 'dotenv/config'
 import { ethers } from 'ethers'
 
-const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL || '')
+const networkCustom = {
+  name: 'Evmos',
+  chainId: 9001,
+  ensAddress: '0xae9da235a2276caa3f6484ad8f0efbf4e0d45246',
+}
+
+const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL || '', networkCustom)
+
+const ensRegistrarAddress = '0xae9Da235A2276CAa3f6484ad8F0EFbF4e0d45246';
 
 export default async function handler(req, res) {
   const { input } = req.query
